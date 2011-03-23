@@ -1,0 +1,32 @@
+Justification of $whatever-name$
+
+HTML Forms. I want forms, and I suspect you do too.
+
+Things I want:
+
+* All the standard HTML 4 elements with full customizing; I want to be
+  able to specify classes, IDs, obscure and non-standard attributes,
+  preferably with hiccup/css style #id and .class short cuts.
+
+* Pick, choose and modify: I might not like a particular element's
+  generator function, so I need to be able to replace or extend it.
+
+* Wrappers / HTML decoration: I want to be able to wrap <label>s and
+  validation messages around elements automatically, but sometimes I
+  don't want that, or I may want "loose" labels referring to IDs, and
+  I don't want any option to be especially cumbersome.
+
+* HTML 5 elements and custom elements. I want the same interface to
+  work for current, future and custum UI elements.
+
+* Fool proof customizable parameter/value/error passing. Give me a
+  simple way of passing a form-full of data to a view without a lot of
+  annoying (and thread-specific) bindings. And give me the option of
+  passing in that data in a different format without having to
+  re-write the core functions.
+
+* Let me do all of the above using whatever mixture of static and
+  dynamic constructs are useful for the job.
+
+Here's my attempt. Again with the functions.
+
