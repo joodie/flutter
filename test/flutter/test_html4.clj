@@ -37,7 +37,7 @@
 
 (deftest select
   (let [field (-> no-field
-                  wrap-drop-down)]
+                  wrap-select)]
     (is (= (field :select
                   {}
                   :my-name

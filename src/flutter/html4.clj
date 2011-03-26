@@ -13,21 +13,38 @@ the following wrappers."
 
 (defn wrap-basic-input-fields
   "accept type :input and translate straight to a hiccup [:input] element,
-adding name and value in attributes. ignores opts."
+adding name and value in attributes (which probably should include
+  a :type). ignores opts."
   [f]
   (fn [type attrs name _ value]
     (if (= type :input)
       [:input (assoc attrs :name name :value value)])))
 
 (defn wrap-html4-input-fields
-  "provides the standard html4 input types: translates types
+  "provides the standard HTML 4 input types: translates types
  :text :password :checkbox :radio :submit :reset :file :hidden
- :image and :button to type :input."
+ :image and :button to type :input.
+
+If you want the full set of HTML 4 form fields, use `wrap-html4-fields'
+instead."
   [f]
   (fn [type attrs name opts value]
     (if (#{:text :password :checkbox :radio :submit :reset
            :file :hidden :image :button} type)
       (f :input (assoc attrs :type type) name nil value)
+      (f type attrs name opts value))))
+
+;;;;
+;;;; text-area
+;;;;
+
+(defn wrap-text-area
+  "provides the :text-area element type, value is placed as the content
+  and opts is ignored"
+  [f]
+  (fn [type attrs name opts value]
+    (if (= type :text-area)
+      [:textarea (assoc attrs :name name) (escape-html value)]
       (f type attrs name opts value))))
 
 ;;;;
@@ -98,8 +115,8 @@ otherwise, check if value is equal to values"
             :option   (apply make-option*  value (rest spec))))
     (make-option* value spec)))
 
-(defn wrap-drop-down
-  "procide <select> field. opts is a sequence of option specs:
+(defn wrap-select
+  "procide :select field. opts is a sequence of option specs:
 
 option spec can be:
 
@@ -115,3 +132,24 @@ option spec can be:
       (into [:select (assoc attrs :name name)]
             (map #(make-option value %) opts))
       (f type attrs name opts value))))
+
+;;;;
+;;;; convenience functions, providing all the standard HTML fields
+;;;;
+
+(defn wrap-html4-fields
+  "Provides all the HTML 4 form fields in a sane way. Includes
+
+wrap-basic-input-fields, wrap-html4-input-fields,
+wrap-radio-and-checkbox, wrap-select and wrap-text-area"
+  [f]
+  (-> f
+      wrap-basic-input-fields
+      wrap-html4-input-fields
+      wrap-radio-and-checkbox
+      wrap-select
+      wrap-text-area))
+
+(def html4-fields
+  ^{:doc "wrap-html4-fields, pre-wrapped in `no-field'"}
+  (wrap-html4-fields no-field))
