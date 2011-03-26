@@ -5,6 +5,7 @@ next.release:
 * added :text-area type
 * split out html4 field types into flutter.html4.* sub-packages
 * added wrap-html4-fields & html4-fields convenience functions
+* added html5 input types
 
 v0.0.1:
 
