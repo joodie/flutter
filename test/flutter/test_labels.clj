@@ -5,8 +5,8 @@
 
 (deftest labels
   (let [field (-> no-field
-                  (wrap-labels {:my-name "Label"})
-                  wrap-basic-input-fields)]
+                  wrap-basic-input-fields
+                  (wrap-labels {:my-name "Label"}))]
     (is (= (field :input {:type :text} :my-name nil "val")
            [:label "Label" [:input {:type :text :name :my-name :value "val"}]]))
     (is (= (field :input {:type :text} :other-name nil "val")
