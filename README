@@ -1,6 +1,6 @@
-Justification of $whatever-name$
+Flutter: Hiccup based HTML form fields for clojure.
 
-HTML Forms. I want forms, and I suspect you do too.
+I want forms, and I suspect you do too.
 
 Things I want:
 
@@ -28,5 +28,13 @@ Things I want:
 * Let me do all of the above using whatever mixture of static and
   dynamic constructs are useful for the job.
 
-Here's my attempt. Again with the functions.
+This is a work in progress. Not all of the above is implemented yet,
+the API may change, use at your own risk, yada yada yada.
+
+(c) 2011 Joost Diepenmaat, Zeekat Softwareontwikkeling
+
+http://joost.zeekat.nl/  - joost@zeekat.nl
+
+Distributed under the Eclipse Public License, the same as Clojure.
+
 
