@@ -1,5 +1,6 @@
 (ns flutter.test-shortcuts
-  (:use [flutter shortcuts html4]
+  (:use [flutter shortcuts no-field]
+        flutter.html4.input-fields
         clojure.test))
 
 (deftest shortcuts

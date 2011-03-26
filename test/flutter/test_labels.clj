@@ -1,6 +1,7 @@
 (ns flutter.test-labels
   (:use clojure.test
-        flutter.html4
+        flutter.no-field
+        flutter.html4.input-fields
         flutter.labels))
 
 (deftest labels

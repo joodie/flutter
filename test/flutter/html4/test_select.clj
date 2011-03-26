@@ -1,39 +1,7 @@
-(ns flutter.test-html4
-  (:use clojure.test
-        flutter.html4))
-
-(deftest selected
-  (is (selected? :val :val))
-  (is (selected? :val [:val]))
-  (is (selected? :val [:v1 :v2 :val]))
-  (is (selected? :val #{:v1 :v2 :val}))
-  (is (not (selected? :val :v2)))
-  (is (not (selected? :val [])))
-  (is (not (selected? :val [:v1 :v2])))
-  (is (not (selected? :val #{:v2 :v1}))))
-
-(deftest basic
-  (let [field (wrap-basic-input-fields no-field)]
-
-    (is (= (field :input {:type :text} :my-name nil :my-value)
-           [:input {:type :text :name :my-name :value :my-value}]))
-
-    (is (thrown? Exception (field :no-such-type {} :name :value)))))
-
-(deftest input-types
-  (let [field (-> no-field
-                  wrap-basic-input-fields
-                  wrap-html4-input-fields
-                  wrap-radio-and-checkbox)]
-    (is (= (field :radio {} :my-name :val :val)
-           [:input {:type :radio :name :my-name
-                    :value :val :checked :checked}]))
-    (is (= (field :checkbox {} :my-name :val [:val1 :val2])
-           [:input {:type :checkbox :name :my-name
-                    :value :val}]))
-    (is (= (field :checkbox {} :my-name :val [:val1 :val2 :val])
-           [:input {:type :checkbox :name :my-name
-                    :value :val :checked :checked}]))))
+(ns flutter.html4.test-select
+  (:use flutter.html4.select
+        flutter.no-field
+        clojure.test))
 
 (deftest select
   (let [field (-> no-field
