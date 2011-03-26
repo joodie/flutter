@@ -1,3 +1,11 @@
 CHANGES for flutter.
 
-v0.0.1 - initial release
+next.release:
+
+* added :text-area type
+* split out html4 field types input flutter.html4.* packages
+* added wrap-html4-fields & html4-fields convenience functions
+
+v0.0.1:
+
+* initial release
