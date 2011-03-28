@@ -6,6 +6,8 @@ next.release:
 * split out html4 field types into flutter.html4.* sub-packages
 * added wrap-html4-fields & html4-fields convenience functions
 * added html5 input types
+* added hiccup style shortcuts for class and id
+* added more shortcuts to wrap-params
 
 v0.0.1:
 
