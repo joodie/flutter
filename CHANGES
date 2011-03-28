@@ -8,6 +8,7 @@ next.release:
 * added html5 input types
 * added hiccup style shortcuts for class and id
 * added more shortcuts to wrap-params
+* fixed bug that prevented unrecognized types from throwing exceptions
 
 v0.0.1:
 
