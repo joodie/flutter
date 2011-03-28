@@ -10,9 +10,10 @@
 adding name and value in attributes (which probably should include
   a :type). ignores opts."
   [f]
-  (fn [type attrs name _ value]
+  (fn [type attrs name opts value]
     (if (= type :input)
-      [:input (assoc attrs :name name :value value)])))
+      [:input (assoc attrs :name name :value value)]
+      (f type attrs name opts value))))
 
 (defn wrap-html4-input-fields
   "provides the standard HTML 4 input types: translates types
