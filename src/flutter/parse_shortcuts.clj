@@ -12,4 +12,4 @@
   "Parse #id and .classes in a keyword. Returns [tag, id, classes]"
   [name]
   (let [[_ tag id class] (re-matches re-tag (as-str name))]
-    [tag id (if class (.replace ^String class "." " "))]))
+    [(keyword tag) id (if class (.replace ^String class "." " "))]))
