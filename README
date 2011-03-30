@@ -83,8 +83,8 @@ If you create your wrapped field function in the route/controller code,
 you can then pass it on to the view to provide values for the generated
 form. See flutter.params/wrap-params.
 
-This is a work in progress. Not all of the above is implemented yet,
-the API may change, use at your own risk, yada yada yada.
+This is a work in progress. the API may change, use at your own risk,
+read the CHANGES file when upgrading.
 
 (c) 2011 Joost Diepenmaat, Zeekat Softwareontwikkeling
 

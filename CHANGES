@@ -9,6 +9,7 @@ next.release:
 * added hiccup style shortcuts for class and id
 * added more shortcuts to wrap-params
 * fixed bug that prevented unrecognized types from throwing exceptions
+* added some more documentation and a few simple examples
 
 v0.0.1:
 
