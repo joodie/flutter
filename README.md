@@ -8,12 +8,12 @@ field functions and wrappers.
 ### FIELD FUNCTION
 
 A field function is a function that takes 5 arguments, including a
-name and a value and returns a snippet of html in hiccup format.
+name and a value and returns a snippet of html in [hiccup][] format.
 
     (field type attributes name opts value) -> snippet
 
-  * `type' is the type of field. If you're using flutter.html4, the
-recognized types are:
+  * `type' is the type of field. If you're using
+  `flutter.html4/html4-fields', the recognized types are:
 
     :input, :text, :radio, :checkbox, :text-area, :select
     :hidden, :submit, :button and :image 
@@ -34,15 +34,15 @@ the value of the value attribute.
 with `name'. for :radio and :checkbox, this means that if `opts' is in
 `value', the input element is checked.
 
-For a single element a hiccup snippet looks like
+  * For a single element, the returned hiccup snippet looks like
 
     [element-name attributes content*]
 
-but fields may return something more complex.
+  but fields may return something more complex.
 
 ### WRAPPER FUNCTIONS
 
-Like the ring api, almost all functionality in flutter is implemented
+Like the [ring][] API, almost all functionality in flutter is implemented
 in wrapper functions. In fact, the flutter.core/field function just
 throws an exception when called to indicate that the requested field
 is not implemented.
