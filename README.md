@@ -1,38 +1,38 @@
-Flutter: Hiccup based HTML form fields for clojure.
+# Flutter: Hiccup based HTML form fields for clojure.
 
-**** API Concepts ****
+## API CONCEPTS
 
 There are two important concepts in the design of this library:
 field functions and wrappers.
 
-** field function **
+### FIELD FUNCTION
 
 A field function is a function that takes 5 arguments, including a
 name and a value and returns a snippet of html in hiccup format.
 
     (field type attributes name opts value) -> snippet
 
-`type' is the type of field. If you're using flutter.html4, the
+  * `type' is the type of field. If you're using flutter.html4, the
 recognized types are:
 
     :input, :text, :radio, :checkbox, :text-area, :select
     :hidden, :submit, :button and :image 
 
-`attributes' is a map of html element attributes, that are generally
-passed on to the form element that implements the field type. most
-field functions modify the attributes based on the other arguments
-too. For instance, field type :text will result in an element-name of
-:input with additional attributes {:type :text :name name :value
-value}
+  * `attributes' is a map of html element attributes, that are
+generally passed on to the form element that implements the field
+type. most field functions modify the attributes based on the other
+arguments too. For instance, field type :text will result in an
+element-name of :input with additional attributes {:type :text :name
+name :value value}
 
-`name' is the name of the input element for this field.
+  * `name' is the name of the input element for this field.
 
-`opts' is type-specific. for :radio and :checkbox types, this is
+  * `opts' is type-specific. for :radio and :checkbox types, this is
 the value of the value attribute.
 
-`value' is the value (or set, or sequence of values) associated 
-with `name'. for :radio and :checkbox, this means that if `opts'
-is in `value', the input element is checked.
+  * `value' is the value (or set, or sequence of values) associated
+with `name'. for :radio and :checkbox, this means that if `opts' is in
+`value', the input element is checked.
 
 For a single element a hiccup snippet looks like
 
@@ -40,12 +40,12 @@ For a single element a hiccup snippet looks like
 
 but fields may return something more complex.
 
-** field wrapper functions **
+### WRAPPER FUNCTIONS
 
 Like the ring api, almost all functionality in flutter is implemented
-in wrapper functions. In fact, the flutter.core/field function throws
-an exception when called to indicate that the requested field is not
-implemented.
+in wrapper functions. In fact, the flutter.core/field function just
+throws an exception when called to indicate that the requested field
+is not implemented.
 
 Wrapper functions can add field types, implement a more logical
 interface to some existing types, change the user-visible API etc.
@@ -83,8 +83,15 @@ If you create your wrapped field function in the route/controller code,
 you can then pass it on to the view to provide values for the generated
 form. See flutter.params/wrap-params.
 
-This is a work in progress. the API may change, use at your own risk,
-read the CHANGES file when upgrading.
+## DISCLAIMER
+
+This is a work in progress. The API may change, read the CHANGES file
+when upgrading. This code almost certainly contains bugs. If you find
+one, check the latest release or the master branch on 
+http://github.com/joodie/flutter and if it's not been fixed, please
+report any issues - preferably using a pull request on github.
+
+## COPYRIGHT AND LICENSE
 
 (c) 2011 Joost Diepenmaat, Zeekat Softwareontwikkeling
 
