@@ -1,5 +1,5 @@
 (ns flutter.html4
-  (:use flutter.no-field
+  (:use flutter.core
         flutter.html4.input-fields
         flutter.html4.select
         flutter.html4.text-area))
@@ -22,5 +22,5 @@ wrap-radio-and-checkbox, wrap-select and wrap-text-area"
       wrap-text-area))
 
 (def html4-fields
-  ^{:doc "wrap-html4-fields, pre-wrapped in `no-field'"}
-  (wrap-html4-fields no-field))
+  ^{:doc "wrap-html4-fields, pre-wrapped in the core `field'"}
+  (wrap-html4-fields field))

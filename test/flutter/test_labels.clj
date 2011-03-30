@@ -1,11 +1,11 @@
 (ns flutter.test-labels
   (:use clojure.test
-        flutter.no-field
+        flutter.core
         flutter.html4.input-fields
         flutter.labels))
 
 (deftest labels
-  (let [field (-> no-field
+  (let [field (-> field
                   wrap-basic-input-fields
                   (wrap-labels {:my-name "Label"}))]
     (is (= (field :input {:type :text} :my-name nil "val")

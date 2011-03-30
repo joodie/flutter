@@ -1,18 +1,18 @@
 (ns flutter.html4.test-input-fields
-  (:use flutter.no-field
+  (:use flutter.core
         flutter.html4.input-fields
         clojure.test))
 
 (deftest basic
-  (let [field (wrap-basic-input-fields no-field)]
-
+  (let [field (-> field
+                  wrap-basic-input-fields)]
     (is (= (field :input {:type :text} :my-name nil :my-value)
            [:input {:type :text :name :my-name :value :my-value}]))
 
     (is (thrown? Exception (field :no-such-type {} :name :value)))))
 
 (deftest input-types
-  (let [field (-> no-field
+  (let [field (-> field
                   wrap-basic-input-fields
                   wrap-html4-input-fields
                   wrap-radio-and-checkbox)]

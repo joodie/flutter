@@ -1,10 +1,10 @@
 (ns flutter.html4.test-select
   (:use flutter.html4.select
-        flutter.no-field
+        flutter.core
         clojure.test))
 
 (deftest select
-  (let [field (-> no-field
+  (let [field (-> field
                   wrap-select)]
     (is (= (field :select
                   {}
