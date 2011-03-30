@@ -1,32 +1,87 @@
 Flutter: Hiccup based HTML form fields for clojure.
 
-I want forms, and I suspect you do too.
+**** API Concepts ****
 
-Things I want:
+There are two important concepts in the design of this library:
+field functions and wrappers.
 
-* All the standard HTML 4 elements with full customizing; I want to be
-  able to specify classes, IDs, obscure and non-standard attributes,
-  preferably with hiccup/css style #id and .class short cuts.
+** field function **
 
-* Pick, choose and modify: I might not like a particular element's
-  generator function, so I need to be able to replace or extend it.
+A field function is a function that takes 5 arguments, including a
+name and a value and returns a snippet of html in hiccup format.
 
-* Wrappers / HTML decoration: I want to be able to wrap <label>s and
-  validation messages around elements automatically, but sometimes I
-  don't want that, or I may want "loose" labels referring to IDs, and
-  I don't want any option to be especially cumbersome.
+    (field type attributes name opts value) -> snippet
 
-* HTML 5 elements and custom elements. I want the same interface to
-  work for current, future and custum UI elements.
+`type' is the type of field. If you're using flutter.html4, the
+recognized types are:
 
-* Fool proof customizable parameter/value/error passing. Give me a
-  simple way of passing a form-full of data to a view without a lot of
-  annoying (and thread-specific) bindings. And give me the option of
-  passing in that data in a different format without having to
-  re-write the core functions.
+    :input, :text, :radio, :checkbox, :text-area, :select
+    :hidden, :submit, :button and :image 
 
-* Let me do all of the above using whatever mixture of static and
-  dynamic constructs are useful for the job.
+`attributes' is a map of html element attributes, that are generally
+passed on to the form element that implements the field type. most
+field functions modify the attributes based on the other arguments
+too. For instance, field type :text will result in an element-name of
+:input with additional attributes {:type :text :name name :value
+value}
+
+`name' is the name of the input element for this field.
+
+`opts' is type-specific. for :radio and :checkbox types, this is
+the value of the value attribute.
+
+`value' is the value (or set, or sequence of values) associated 
+with `name'. for :radio and :checkbox, this means that if `opts'
+is in `value', the input element is checked.
+
+For a single element a hiccup snippet looks like
+
+    [element-name attributes content*]
+
+but fields may return something more complex.
+
+** field wrapper functions **
+
+Like the ring api, almost all functionality in flutter is implemented
+in wrapper functions. In fact, the flutter.core/field function throws
+an exception when called to indicate that the requested field is not
+implemented.
+
+Wrapper functions can add field types, implement a more logical
+interface to some existing types, change the user-visible API etc.
+
+Wrapper functions can make the user-visible API a bit nicer to
+look at:
+
+    (ns flutter.test-shortcuts
+      (:use [flutter shortcuts html4]))
+
+    (let [field (-> html4-fields
+                    wrap-shortcuts)]
+
+       ;; generate a text input field with name "my-name", value
+       ;; and id "my-id"
+       (field :text#my-id "my-name" "some text value"))
+
+See flutter.html4/html4-fields and flutter.shortcuts/wrap-shortcuts.
+
+There's also a wrapper that can be used to provide values for field
+names:
+
+    (ns flutter.test-shortcuts
+      (:use [flutter shortcuts html4 params]))
+
+    (let [field (-> html4-fields
+                    wrap-shortcuts
+                    (wrap-params {:myname "some value")]
+
+       ;; generate a text input field with name myname,
+       ;; class "my-class" and value from params
+       (field :text.my-class :myname))
+
+If you create your wrapped field function in the route/controller code,
+you can then pass it on to the view to provide values for the generated
+form. See flutter.params/wrap-params.
 
 This is a work in progress. Not all of the above is implemented yet,
 the API may change, use at your own risk, yada yada yada.
