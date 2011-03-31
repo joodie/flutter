@@ -1,6 +1,6 @@
 # Flutter: Hiccup based HTML form fields for clojure.
 
-Read the MOTIVATION file for why.
+Read the `MOTIVATION` file for why.
 
 ## API CONCEPTS
 
@@ -14,33 +14,42 @@ name and a value and returns a snippet of html in [hiccup](https://github.com/we
 
     (field type attributes name opts value) -> snippet
 
-  * `type' is the type of field. If you're using
-  `flutter.html4/html4-fields', the recognized types are:
+#### arguments
+
+`type` is the type of field. If you're using
+`flutter.html4/html4-fields`, the recognized types are:
 
      :input, :text, :radio, :checkbox, :text-area, :select
      :hidden, :submit, :button and :image 
 
-  * `attributes' is a map of html element attributes, that are
-generally passed on to the form element that implements the field
-type. most field functions modify the attributes based on the other
-arguments too. For instance, field type :text will result in an
-element-name of :input with additional attributes {:type :text :name
-name :value value}
+`attributes` is a map of html element attributes, that are generally
+passed on to the form element that implements the field type. most
+field functions modify the attributes based on the other arguments
+too. For instance, field type `:text` will result in an element-name
+of `:input` with additional attributes
+`{:type :text :name name :value value}`. This argument may be `nil`.
 
-  * `name' is the name of the input element for this field.
+`name` is the name of the input element for this field.
 
-  * `opts' is type-specific. for :radio and :checkbox types, this is
-the value of the value attribute.
+`opts` is type-specific. For `:radio` and `:checkbox` types, this is
+the value of the value attribute. For the `:select` type as
+implemented by `hiccup.html4.select/wrap-select`, it can be a rather
+complex collection representing options and optgroups. This argument
+may be `nil`, and is not used by all field types. Wrappers that
+implement types that do require an `opts` argument should be
+documented as such.
 
-  * `value' is the value (or set, or sequence of values) associated
-with `name'. for :radio and :checkbox, this means that if `opts' is in
-`value', the input element is checked.
+`value` is the value (or set, or sequence of values) associated with
+name for this form. for `:radio` and `:checkbox`, this means that if opts
+is in value, the input element is checked.
 
-  * For a single element, the returned hiccup snippet looks like
+#### return value
+  
+For a single element, the returned hiccup snippet looks like
 
     [element-name attributes content*]
 
-  but fields may return something more complex.
+but fields may return something more complex.
 
 ### WRAPPER FUNCTIONS
 
@@ -65,7 +74,7 @@ look at:
        ;; and id "my-id"
        (field :text#my-id "my-name" "some text value"))
 
-See flutter.html4/html4-fields and flutter.shortcuts/wrap-shortcuts.
+See `flutter.html4/html4-fields` and `flutter.shortcuts/wrap-shortcuts`.
 
 There's also a wrapper that can be used to provide values for field
 names:
@@ -83,7 +92,17 @@ names:
 
 If you create your wrapped field function in the route/controller code,
 you can then pass it on to the view to provide values for the generated
-form. See flutter.params/wrap-params.
+form. See `flutter.params/wrap-params`.
+
+## DETAILED DOCUMENTATION IS INLINE
+
+This file is intended to give an overview of the design of the library
+and to give a few hints on expected use cases.
+
+In general, all the useful details of the flutter API is documented as
+inline documention on their respective wrappers, so please pull up the
+inline docs in your favorite development environment or just browse
+the source code if you want to know the specifics.
 
 ## DISCLAIMER
 
