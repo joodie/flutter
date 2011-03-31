@@ -17,8 +17,8 @@ name and a value and returns a snippet of html in [hiccup](https://github.com/we
   * `type' is the type of field. If you're using
   `flutter.html4/html4-fields', the recognized types are:
 
-    :input, :text, :radio, :checkbox, :text-area, :select
-    :hidden, :submit, :button and :image 
+     :input, :text, :radio, :checkbox, :text-area, :select
+     :hidden, :submit, :button and :image 
 
   * `attributes' is a map of html element attributes, that are
 generally passed on to the form element that implements the field
@@ -57,7 +57,7 @@ look at:
 
     (ns flutter.test-shortcuts
       (:use [flutter shortcuts html4]))
-\
+
     (let [field (-> html4-fields
                     wrap-shortcuts)]
 
