@@ -1,5 +1,7 @@
 # Flutter: Hiccup based HTML form fields for clojure.
 
+Read the MOTIVATION file for why.
+
 ## API CONCEPTS
 
 There are two important concepts in the design of this library:
@@ -8,7 +10,7 @@ field functions and wrappers.
 ### FIELD FUNCTION
 
 A field function is a function that takes 5 arguments, including a
-name and a value and returns a snippet of html in [hiccup][] format.
+name and a value and returns a snippet of html in [hiccup](https://github.com/weavejester/hiccup) format.
 
     (field type attributes name opts value) -> snippet
 
@@ -42,7 +44,7 @@ with `name'. for :radio and :checkbox, this means that if `opts' is in
 
 ### WRAPPER FUNCTIONS
 
-Like the [ring][] API, almost all functionality in flutter is implemented
+Like the [ring API](https://github.com/mmcgrana/ring/blob/master/SPEC), almost all functionality in flutter is implemented
 in wrapper functions. In fact, the flutter.core/field function just
 throws an exception when called to indicate that the requested field
 is not implemented.
@@ -55,7 +57,7 @@ look at:
 
     (ns flutter.test-shortcuts
       (:use [flutter shortcuts html4]))
-
+\
     (let [field (-> html4-fields
                     wrap-shortcuts)]
 
