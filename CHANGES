@@ -1,6 +1,6 @@
 CHANGES for flutter.
 
-next.release:
+v0.0.2:
 
 * added :text-area type
 * split out html4 field types into flutter.html4.* sub-packages
