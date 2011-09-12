@@ -1,5 +1,8 @@
 CHANGES for flutter.
 
+v0.0.3:
+* added :value and :h / :html types
+
 v0.0.2:
 
 * added :text-area type
