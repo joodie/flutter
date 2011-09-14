@@ -1,4 +1,5 @@
 (ns flutter.shortcuts
+  "provide shortened function signatures with hiccup-style shortcuts for classes and ids"
   (:use flutter.parse-shortcuts))
 
 (defn wrap-id-and-class-shortcuts

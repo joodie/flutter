@@ -1,12 +1,9 @@
 (ns flutter.html4
+  "convenience functions providing all the standard HTML fields"
   (:use flutter.core
         flutter.html4.input-fields
         flutter.html4.select
         flutter.html4.text-area))
-
-;;;;
-;;;; convenience functions, providing all the standard HTML fields
-;;;;
 
 (defn wrap-html4-fields
   "Provides all the HTML 4 form fields in a sane way. Includes

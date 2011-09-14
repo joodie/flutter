@@ -1,4 +1,5 @@
-(ns flutter.html5)
+(ns flutter.html5
+  "HTML5 input type support")
 
 (defn wrap-html5-input-fields
   "provide html5 input types:

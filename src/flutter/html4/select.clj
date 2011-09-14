@@ -2,7 +2,7 @@
   (:use flutter.selected))
 
 ;;;;
-;;;; code for <select> elements and its descendents
+;;;; code for &lt;select&gt; elements and its descendents
 ;;;;
 
 (defn- make-option*

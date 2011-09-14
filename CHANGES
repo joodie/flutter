@@ -1,5 +1,8 @@
 CHANGES for flutter.
 
+Next.Release:
+* More inline docs and marginalia improvements
+
 v0.0.4:
 * removed dev dependency on swank-clojure
 

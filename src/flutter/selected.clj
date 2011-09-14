@@ -1,4 +1,5 @@
-(ns flutter.selected)
+(ns flutter.selected
+  "tools for handling multi-valued parameters")
 
 (defn selected?
   "if values is sequential or a set, check if values contains value
