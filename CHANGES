@@ -1,7 +1,8 @@
 CHANGES for flutter.
 
-Next.Release:
+v0.0.5:
 * More inline docs and marginalia improvements
+* Moved most of the README inline
 
 v0.0.4:
 * removed dev dependency on swank-clojure
