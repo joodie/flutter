@@ -2526,7 +2526,7 @@ $(document).ready(function() {
     ul.css('margin-top', '0px')
 
 })
-</script><title>flutter -- Marginalia</title></head><body><table><tr><td class="docs"><div class="header"><h1 class="project-name">flutter</h1><h2 class="project-version">0.0.5</h2><br /><p>consistent, extensible, hiccup-based HTML form fields</p>
+</script><title>flutter -- Marginalia</title></head><body><table><tr><td class="docs"><div class="header"><h1 class="project-name">flutter</h1><h2 class="project-version">0.0.6</h2><br /><p>consistent, extensible, hiccup-based HTML form fields</p>
 </div><div class="dependencies"><h3>dependencies</h3><table><tr><td class="dep-name">hiccup</td><td class="dotted"><hr /></td><td class="dep-version">0.3.4</td></tr></table></div><div class="dependencies"><h3>dev dependencies</h3><table></table></div></td><td class="codes" style="text-align: center; vertical-align: middle;color: #666;padding-right:20px"><br /><br /><br />(this space intentionally left almost blank)</td></tr><tr><td class="docs"><div class="toc"><a name="toc"><h3>namespaces</h3></a><ul><li><a href="#flutter.core">flutter.core</a></li><li><a href="#flutter.html4.input-fields">flutter.html4.input-fields</a></li><li><a href="#flutter.html4.select">flutter.html4.select</a></li><li><a href="#flutter.html4.text-area">flutter.html4.text-area</a></li><li><a href="#flutter.html4">flutter.html4</a></li><li><a href="#flutter.html5">flutter.html5</a></li><li><a href="#flutter.labels">flutter.labels</a></li><li><a href="#flutter.params">flutter.params</a></li><li><a href="#flutter.parse-shortcuts">flutter.parse-shortcuts</a></li><li><a href="#flutter.selected">flutter.selected</a></li><li><a href="#flutter.shortcuts">flutter.shortcuts</a></li><li><a href="#flutter.value">flutter.value</a></li></ul></div></td><td class="codes">&nbsp;</td></tr><tr><td class="docs"><div class="docs-header"><a class="anchor" href="#flutter.core" name="flutter.core"><h1 class="project-name">flutter.core</h1><a class="toc-link" href="#toc">toc</a></a></div></td><td class="codes" /></tr><tr><td class="docs"><h2>API CONCEPTS</h2>
 
 <p>There are two important concepts in the design of this library:
@@ -2670,9 +2670,8 @@ instead.</p>
   ([values attrs my-value label]
      [:option (apply assoc attrs
                 :value my-value
-                :label label
-                :value my-value
-                (if (selected? my-value values) [:selected :selected]))])
+                (if (selected? my-value values) [:selected :selected]))
+      label])
   ([values my-value label]
      (make-option* values {} my-value label))
   ([values my-value]
