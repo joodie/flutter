@@ -1,5 +1,8 @@
 CHANGES for flutter.
 
+v0.0.6:
+* option/label fixes
+
 v0.0.5:
 * More inline docs and marginalia improvements
 * Moved most of the README inline

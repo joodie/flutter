@@ -1,4 +1,4 @@
-(defproject flutter "0.0.5"
+(defproject flutter "0.0.6"
   :description "consistent, extensible, hiccup-based HTML form fields"
   :dependencies [[hiccup "0.3.4"]])
 
