@@ -9,9 +9,8 @@
   ([values attrs my-value label]
      [:option (apply assoc attrs
                 :value my-value
-                :label label
-                :value my-value
-                (if (selected? my-value values) [:selected :selected]))])
+                (if (selected? my-value values) [:selected :selected]))
+      label])
   ([values my-value label]
      (make-option* values {} my-value label))
   ([values my-value]
