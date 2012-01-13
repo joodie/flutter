@@ -1,5 +1,4 @@
-(ns flutter.parse-shortcuts
-  (:use [clojure.contrib.string :only [as-str]]))
+(ns flutter.parse-shortcuts)
 
 ;; code adapted from hiccup.core
 
@@ -10,6 +9,6 @@
 
 (defn parse-shortcuts
   "Parse #id and .classes in a keyword. Returns [tag, id, classes]"
-  [name]
-  (let [[_ tag id class] (re-matches re-tag (as-str name))]
+  [tagname]
+  (let [[_ tag id class] (re-matches re-tag (name tagname))]
     [(keyword tag) id (if class (.replace ^String class "." " "))]))
